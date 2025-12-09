@@ -75,36 +75,60 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className="hero-visual">
-                    {/* CSS Phone Mockup */}
-                    <div className="phone-mockup">
-                        <div className="phone-frame">
-                            <div className="phone-notch"></div>
-                            <div className="phone-screen">
-                                {/* Mock UI Header */}
-                                <div className="mock-header">
-                                    <div className="mock-brand">wah<span>❤️</span>l</div>
-                                </div>
-
-                                {/* Mock UI Content */}
-                                <div className="mock-content">
-                                    <div className="mock-card">
-                                        <h3>Report Incident</h3>
-                                        <p>Share as much or as little as you feel comfortable with.</p>
-                                        <div className="mock-input"></div>
-                                        <div className="mock-btn">Submit Report</div>
+                <div className="hero-visual-3d">
+                    <div className="perspective-container">
+                        {/* Phone 1: Back/Left - Safety Tips */}
+                        <div className="phone-mockup phone-left">
+                            <div className="phone-frame">
+                                <div className="phone-notch"></div>
+                                <div className="phone-screen screen-secondary">
+                                    <div className="mock-header">
+                                        <div className="mock-title">Safety Tips</div>
                                     </div>
-
-                                    <div className="mock-toast-bw">
-                                        <span>💜 You are brave for speaking up.</span>
+                                    <div className="mock-list">
+                                        <div className="mock-item small">
+                                            <div className="icon-circle">🛡️</div>
+                                            <div className="lines">
+                                                <div className="line l1"></div>
+                                                <div className="line l2"></div>
+                                            </div>
+                                        </div>
+                                        <div className="mock-item small">
+                                            <div className="icon-circle">📞</div>
+                                            <div className="lines">
+                                                <div className="line l1"></div>
+                                                <div className="line l2"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                {/* Mock UI Tab Bar */}
-                                <div className="mock-tabbar">
-                                    <div className="tab active"></div>
-                                    <div className="tab"></div>
-                                    <div className="tab"></div>
+                        {/* Phone 2: Front/Right - Report */}
+                        <div className="phone-mockup phone-right">
+                            <div className="phone-frame">
+                                <div className="phone-notch"></div>
+                                <div className="phone-screen">
+                                    <div className="mock-header">
+                                        <div className="mock-brand">wah<span>❤️</span>l</div>
+                                    </div>
+                                    <div className="mock-content">
+                                        <div className="mock-card">
+                                            <h3>Report Incident</h3>
+                                            <p>Share as much or as little as you feel comfortable with.</p>
+                                            <div className="mock-input"></div>
+                                            <div className="mock-btn">Submit Report</div>
+                                        </div>
+                                        <div className="mock-toast-bw">
+                                            <span>💜 You are brave.</span>
+                                        </div>
+                                    </div>
+                                    <div className="mock-tabbar">
+                                        <div className="tab active"></div>
+                                        <div className="tab"></div>
+                                        <div className="tab"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,83 +1,148 @@
 .stories {
     padding: 5rem 0;
-    background-color: #F8F5F2;
-    /* Slightly darker cream for contrast */
+    background-color: #FDFBF7;
+    overflow: hidden;
+    position: relative;
 }
 
-.stories-scroll {
+.marquee-container {
     display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 2rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+    justify-content: center;
+    gap: 2rem;
+    height: 600px;
+    /* Fixed height for the viewing window */
+    overflow: hidden;
+    position: relative;
+    /* Mask the top and bottom for smooth fade out */
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
 }
 
-/* Hide scrollbar but keep functionality */
-.stories-scroll::-webkit-scrollbar {
+.marquee-column {
+    flex: 1;
+    max-width: 320px;
+    position: relative;
+}
+
+.marquee-column.offset-top {
+    transform: translateY(-50px);
+}
+
+.marquee-track {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: scrollUp linear infinite;
+}
+
+.slow {
+    animation-duration: 35s;
+}
+
+.medium {
+    animation-duration: 25s;
+}
+
+.fast {
+    animation-duration: 20s;
+}
+
+@keyframes scrollUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+
+    /* Move up by 50% assuming content is doubled */
+}
+
+/* Phone Card Sying */
+.phone-card {
+    background: white;
+    border-radius: 24px;
+    border: 4px solid #F3E8FF;
+    box-shadow: 0 10px 25px rgba(74, 59, 50, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.phone-card:hover {
+    transform: scale(1.02);
+    border-color: var(--color-purple-primary);
+}
+
+.phone-card-notch {
+    width: 60px;
+    height: 12px;
+    background: #F3E8FF;
+    margin: 0 auto;
+    border-radius: 0 0 8px 8px;
+}
+
+.phone-card-content {
+    padding: 1.5rem;
+}
+
+.pc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.pc-avatar {
+    width: 32px;
+    height: 32px;
+    background: #eee;
+    border-radius: 50%;
+}
+
+.pc-user-line {
+    width: 80px;
     height: 8px;
-}
-
-.stories-scroll::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
+    background: #eee;
     border-radius: 4px;
 }
 
-.story-card {
-    min-width: 300px;
-    max-width: 350px;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.story-options {
-    text-align: right;
-    color: #ccc;
-    font-size: 1.5rem;
-    line-height: 0.5;
-    margin-bottom: 1rem;
-    cursor: pointer;
-}
-
-.story-text {
-    font-size: 1.1rem;
+.pc-body p {
+    font-size: 0.95rem;
     color: var(--color-text-main);
-    margin-bottom: 2rem;
     line-height: 1.5;
+    margin-bottom: 1.5rem;
 }
 
-.story-meta {
+.pc-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
 }
 
-.interactions {
-    display: flex;
-    gap: 1rem;
-}
-
-.int-item {
+.pc-pill {
     display: flex;
     align-items: center;
     gap: 4px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--color-purple-primary);
+    font-weight: 700;
 }
 
-.heart-filled {
-    color: var(--color-purple-primary);
-    /* Use primary for stroke */
-    fill: var(--color-purple-primary);
-    /* Filled */
+.pc-date {
+    font-size: 0.8rem;
+    color:
+        var(--color-text-muted);
 }
 
-.liked span {
-    color: var(--color-purple-primary);
+@media (max-width: 768px) {
+    .mobile-hide {
+        display: none;
+    }
+
+    .marquee-container {
+        gap: 1rem;
+    }
 }
