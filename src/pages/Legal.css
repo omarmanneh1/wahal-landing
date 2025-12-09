@@ -1,0 +1,77 @@
+.legal-page {
+    padding-top: 120px;
+    /* Navbar clearance */
+    padding-bottom: 5rem;
+    max-width: 800px;
+    /* Better reading width */
+}
+
+.legal-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-purple-primary);
+}
+
+.last-updated {
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.legal-page section {
+    margin-bottom: 3rem;
+}
+
+.legal-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-page p {
+    margin-bottom: 1rem;
+    color: var(--color-text-main);
+}
+
+.legal-page ul {
+    padding-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.legal-page li {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+}
+
+/* Guidelines Cards */
+.intro {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.guideline-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.guideline-card h3 {
+    color: var(--color-purple-primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .guidelines-grid {
+        grid-template-columns: 1fr;
+    }
+}

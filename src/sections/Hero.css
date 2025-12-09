@@ -1,0 +1,440 @@
+.hero {
+    position: relative;
+    padding-top: 140px;
+    /* Space for fixed navbar */
+    padding-bottom: 5rem;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Background Shapes */
+.hero-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+}
+
+.shape-1 {
+    background: var(--color-purple-light);
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    right: -100px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.shape-2 {
+    background: #F8EFE6;
+    /* Warmer beige blob */
+    width: 400px;
+    height: 400px;
+    bottom: 0px;
+    left: -50px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Text Side */
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-purple-primary);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(155, 107, 194, 0.1);
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-main);
+}
+
+.highlight {
+    color: var(--color-purple-primary);
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: var(--color-purple-light);
+    z-index: -1;
+    opacity: 0.6;
+    border-radius: 4px;
+}
+
+.hero-sub {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-app-store,
+.btn-play-store {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-text-main);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-play-store {
+    background: white;
+    color: var(--color-text-main);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-app-store:hover,
+.btn-play-store:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-app-store .text,
+.btn-play-store .text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.text small {
+    font-size: 0.7rem;
+    font-family: var(--font-body);
+    opacity: 0.8;
+}
+
+.text strong {
+    font-size: 1rem;
+    font-family: var(--font-body);
+}
+
+.trust-badges {
+    display: flex;
+    gap: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 1.5rem;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.trust-icon {
+    color: var(--color-purple-primary);
+}
+
+/* Phone Mockup */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.phone-frame {
+    width: 300px;
+    height: 600px;
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(74, 59, 50, 0.2);
+    border: 8px solid #F3E8FF;
+    /* Light purple border frame */
+    position: relative;
+    overflow: hidden;
+    transform: rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.3s ease;
+}
+
+.hero-visual:hover .phone-frame {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.phone-notch {
+    width: 120px;
+    height: 25px;
+    background: #F3E8FF;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.phone-screen {
+    background: var(--color-bg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mock-header {
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+}
+
+.mock-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.mock-brand span {
+    color: var(--color-heart);
+}
+
+.mock-content {
+    padding: 1rem;
+    flex: 1;
+}
+
+.mock-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    margin-bottom: 1rem;
+}
+
+.mock-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.mock-card p {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.mock-input {
+    height: 80px;
+    background: var(--color-bg);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.mock-btn {
+    background: var(--color-purple-primary);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.mock-toast-bw {
+    background: var(--color-purple-light);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-purple-dark);
+}
+
+.mock-tabbar {
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #eee;
+}
+
+.tab {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: #ddd;
+}
+
+.tab.active {
+    background: var(--color-purple-primary);
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-app-store,
+    .btn-play-store {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .trust-badges {
+        justify-content: center;
+    }
+
+    .phone-frame {
+        transform: none;
+        width: 280px;
+        margin: 0 auto;
+    }
+}
+/* Waitlist Form */
+.waitlist-form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.waitlist-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(0,0,0,0.1);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.waitlist-form input:focus {
+  outline: none;
+  border-color: var(--color-purple-primary);
+}
+
+.btn-waitlist {
+  background-color: var(--color-purple-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.btn-waitlist:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(155, 107, 194, 0.4);
+}
+
+/* Success Message */
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(155, 107, 194, 0.2);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-purple-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-purple-dark);
+}
+
+.success-message h4 {
+  color: var(--color-purple-dark);
+  margin-bottom: 2px;
+}
+
+.success-message p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .waitlist-form {
+    flex-direction: column;
+  }
+  
+  .btn-waitlist {
+    justify-content: center;
+  }
+}
+

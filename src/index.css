@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Brand Colors from Screenshots */
+  --color-bg: #FDFBF7;
+  --color-purple-light: #E6D5F8; /* Lighter purple from backgrounds */
+  --color-purple-primary: #9B6BC2; /* Deep purple for accents/buttons */
+  --color-purple-dark: #6A4C84;
+  --color-text-main: #4A3B32; /* Warm dark brown */
+  --color-text-muted: #8C7B70;
+  --color-heart: #D32F2F;
+  --color-white: #FFFFFF;
+  
+  --font-heading: 'Nunito', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-card: 0 8px 32px rgba(74, 59, 50, 0.05);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-full: 999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-main);
+  font-weight: 800;
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
