@@ -1,16 +1,43 @@
 import { Shield, Heart, Eye, ArrowRight, Check, Home as HomeIcon } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import { useState, type FormEvent } from 'react';
 import './Hero.css';
 
 export default function Hero() {
     const [email, setEmail] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isDuplicate, setIsDuplicate] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        if (email) {
-            setIsSubmitted(true);
-            // Here you would typically send the email to your backend
+        if (!email) return;
+
+        setIsLoading(true);
+        setErrorMsg('');
+        setIsDuplicate(false);
+
+        try {
+            const { error } = await supabase
+                .from('waitlist')
+                .insert({ email });
+
+            if (error) {
+                if (error.code === '23505') { // Unique violation
+                    setIsSubmitted(true);
+                    setIsDuplicate(true);
+                } else {
+                    throw error;
+                }
+            } else {
+                setIsSubmitted(true);
+            }
+        } catch (err: any) {
+            console.error('Error submitting:', err);
+            setErrorMsg('Something went wrong. Please try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -38,26 +65,30 @@ export default function Hero() {
 
                     <div className="hero-cta" id="waitlist-form">
                         {!isSubmitted ? (
-                            <form onSubmit={handleSubmit} className="waitlist-form">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your email address"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                />
-                                <button type="submit" className="btn-waitlist">
-                                    Join Waitlist <ArrowRight size={18} />
-                                </button>
-                            </form>
+                            <>
+                                <form onSubmit={handleSubmit} className="waitlist-form">
+                                    <input
+                                        type="email"
+                                        placeholder="Enter your email address"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        disabled={isLoading}
+                                        required
+                                    />
+                                    <button type="submit" className="btn-waitlist" disabled={isLoading}>
+                                        {isLoading ? 'Joining...' : <>Join Waitlist <ArrowRight size={18} /></>}
+                                    </button>
+                                </form>
+                                {errorMsg && <p className="error-text" style={{ color: 'red', fontSize: '0.8rem', marginTop: '8px' }}>{errorMsg}</p>}
+                            </>
                         ) : (
                             <div className="success-message">
                                 <div className="success-icon">
                                     <Check size={24} />
                                 </div>
                                 <div>
-                                    <h4>You're on the list! 💜</h4>
-                                    <p>We'll notify you when Wahal is ready.</p>
+                                    <h4>{isDuplicate ? "You're already on the list! 💜" : "You're on the list! 💜"}</h4>
+                                    <p>{isDuplicate ? "We'll let you know when we launch." : "We'll notify you when Wahal is ready."}</p>
                                 </div>
                             </div>
                         )}
