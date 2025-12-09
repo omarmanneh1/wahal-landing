@@ -1,4 +1,4 @@
-import { Shield, Heart, Eye, ArrowRight, Check } from 'lucide-react';
+import { Shield, Heart, Eye, ArrowRight, Check, Home as HomeIcon } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import './Hero.css';
 
@@ -76,65 +76,127 @@ export default function Hero() {
                 </div>
 
                 <div className="hero-visual-3d">
-                    <div className="perspective-container">
-                        {/* Phone 1: Back/Left - Safety Tips */}
-                        <div className="phone-mockup phone-left">
-                            <div className="phone-frame">
-                                <div className="phone-notch"></div>
-                                <div className="phone-screen screen-secondary">
-                                    <div className="mock-header">
-                                        <div className="mock-title">Safety Tips</div>
-                                    </div>
-                                    <div className="mock-list">
-                                        <div className="mock-item small">
-                                            <div className="icon-circle">🛡️</div>
-                                            <div className="lines">
-                                                <div className="line l1"></div>
-                                                <div className="line l2"></div>
-                                            </div>
-                                        </div>
-                                        <div className="mock-item small">
-                                            <div className="icon-circle">📞</div>
-                                            <div className="lines">
-                                                <div className="line l1"></div>
-                                                <div className="line l2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="carousel-scene">
+                        <div className="carousel-slat">
 
-                        {/* Phone 2: Front/Right - Report */}
-                        <div className="phone-mockup phone-right">
-                            <div className="phone-frame">
-                                <div className="phone-notch"></div>
-                                <div className="phone-screen">
-                                    <div className="mock-header">
-                                        <div className="mock-brand">wah<span>❤️</span>l</div>
-                                    </div>
-                                    <div className="mock-content">
-                                        <div className="mock-card">
-                                            <h3>Report Incident</h3>
-                                            <p>Share as much or as little as you feel comfortable with.</p>
-                                            <div className="mock-input"></div>
-                                            <div className="mock-btn">Submit Report</div>
+                            {/* Phone 1: Report Incident (Center Start) */}
+                            <div className="phone-3d phone-1">
+                                <div className="phone-frame">
+                                    <div className="phone-notch"></div>
+                                    <div className="phone-screen">
+                                        <div className="mock-nav">
+                                            <ArrowRight size={16} style={{ transform: 'rotate(180deg)' }} />
+                                            <span>Report Incident</span>
                                         </div>
-                                        <div className="mock-toast-bw">
-                                            <span>💜 You are brave.</span>
+                                        <div className="mock-content p-4">
+                                            <div className="mock-card lg">
+                                                <h3>Please describe the incident</h3>
+                                                <p className="sm-text">Share as much or as little as you feel comfortable with...</p>
+                                                <div className="mock-input-lg"></div>
+                                                <div className="mock-btn-lg">Submit Report</div>
+                                            </div>
+                                            <div className="mock-toast-lilac">
+                                                <span>💜 You remember you are brave.</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="mock-tabbar">
-                                        <div className="tab active"></div>
-                                        <div className="tab"></div>
-                                        <div className="tab"></div>
+                                        <MockTabbar active="report" />
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Phone 2: Safety Tips (Right) */}
+                            <div className="phone-3d phone-2">
+                                <div className="phone-frame">
+                                    <div className="phone-notch"></div>
+                                    <div className="phone-screen bg-white">
+                                        <div className="mock-nav">
+                                            <ArrowRight size={16} style={{ transform: 'rotate(180deg)' }} />
+                                            <span>Safety Tips</span>
+                                        </div>
+                                        <div className="mock-list-cards">
+                                            <div className="mock-card-row">
+                                                <div className="icon-sq">🛡️</div>
+                                                <div className="col">
+                                                    <h4>Trust Instincts</h4>
+                                                    <div className="line l1"></div>
+                                                    <div className="line l2"></div>
+                                                </div>
+                                            </div>
+                                            <div className="mock-card-row">
+                                                <div className="icon-sq">📞</div>
+                                                <div className="col">
+                                                    <h4>Emergency Contacts</h4>
+                                                    <div className="line l1"></div>
+                                                    <div className="line l2"></div>
+                                                </div>
+                                            </div>
+                                            <div className="mock-card-row">
+                                                <div className="icon-sq">👁️</div>
+                                                <div className="col">
+                                                    <h4>Stay Aware</h4>
+                                                    <div className="line l1"></div>
+                                                    <div className="line l2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <MockTabbar active="safety" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Phone 3: Stories/Home (Left / Back) */}
+                            <div className="phone-3d phone-3">
+                                <div className="phone-frame">
+                                    <div className="phone-notch"></div>
+                                    <div className="phone-screen bg-dots">
+                                        <div className="mock-header-home">
+                                            <h3>Stories Feed</h3>
+                                            <span className="link">Help</span>
+                                        </div>
+                                        <div className="mock-feed">
+                                            <div className="mock-story-card">
+                                                <div className="dots">...</div>
+                                                <p>"To anyone reading this: you are not alone..."</p>
+                                                <div className="mock-interactions">
+                                                    <span>💜 8</span> <span>💬 0</span>
+                                                </div>
+                                            </div>
+                                            <div className="mock-story-card">
+                                                <div className="dots">...</div>
+                                                <p>"I found strength in speaking up..."</p>
+                                                <div className="mock-interactions">
+                                                    <span>💜 6</span> <span>💬 1</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <MockTabbar active="home" />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     );
+}
+
+function MockTabbar({ active }: { active: string }) {
+    return (
+        <div className="mock-tabbar">
+            <div className={`tab-item ${active === 'home' ? 'active' : ''}`}>
+                <HomeIcon size={20} />
+                <span>Home</span>
+            </div>
+            <div className={`tab-item ${active === 'safety' ? 'active' : ''}`}>
+                <Shield size={20} />
+                <span>Safety</span>
+            </div>
+            <div className={`tab-item ${active === 'report' ? 'active' : ''}`}>
+                <div className="alert-icon"><ArrowRight size={16} style={{ transform: 'rotate(-90deg)' }} /></div>
+                <span>Report</span>
+            </div>
+        </div>
+    )
 }
